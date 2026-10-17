@@ -1,0 +1,18 @@
+baseURL = "https://www.batalaboom.at/"
+locale = "de-AT"
+buildFuture = true   # los eventos tienen fecha futura
+disableKinds = ["taxonomy", "term"]
+title = "Batalá Boom"
+
+[markup.goldmark.renderer]
+  unsafe = true   # el editor de texto del CMS puede guardar HTML
+
+[menus]
+  [[menus.main]]
+    name = "Events"
+    pageRef = "/events"
+    weight = 1
+  [[menus.main]]
+    name = "Mitmachen"
+    pageRef = "/mitmachen"
+    weight = 2

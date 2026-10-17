@@ -1,0 +1,30 @@
+name: Deploy
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "0 3 * * *"   # diario: "Nächste Events" se calcula al construir
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Hugo
+        run: |
+          wget -qO hugo.deb https://github.com/gohugoio/hugo/releases/download/v0.168.0/hugo_extended_0.168.0_linux-amd64.deb
+          sudo dpkg -i hugo.deb
+      - run: hugo --minify
+      - uses: actions/upload-pages-artifact@v3
+        with: { path: public }
+      - id: deployment
+        uses: actions/deploy-pages@v4

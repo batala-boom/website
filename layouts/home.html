@@ -1,0 +1,9 @@
+{{ define "main" }}
+<h1>{{ .Title }}</h1>
+<p class="sub">{{ .Params.untertitel }}</p>
+{{ .Content }}
+<h2>Nächste Events</h2>
+<ul>
+{{ range (where (where site.RegularPages "Section" "events") "Date" "ge" now).ByDate }}{{ partial "event.html" . }}{{ end }}
+</ul>
+{{ end }}

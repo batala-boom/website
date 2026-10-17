@@ -1,0 +1,28 @@
+media:
+  input: static/images
+  output: /images
+
+content:
+  - name: events
+    label: Events
+    type: collection
+    path: content/events
+    filename: "{fields.title}.md"
+    view:
+      fields: [title, date, ort]
+    fields:
+      - { name: title,   label: Titel,   type: string, required: true }
+      - { name: date,    label: Datum,   type: date,   required: true }
+      - { name: uhrzeit, label: Uhrzeit, type: string }
+      - { name: ort,     label: Ort,     type: string }
+      - { name: body,    label: Beschreibung, type: rich-text }
+
+  - name: mitmachen
+    label: Mitmachen
+    type: file
+    path: content/mitmachen.md
+    fields:
+      - { name: title, label: Titel, type: string }
+      - { name: probe, label: Probenzeiten, type: string }
+      - { name: ort,   label: Ort, type: string }
+      - { name: body,  label: Text, type: rich-text }

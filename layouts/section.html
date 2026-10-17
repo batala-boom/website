@@ -1,0 +1,4 @@
+{{ define "main" }}
+<h1>{{ .Title }}</h1>
+<ul>{{ range .Pages.ByDate.Reverse }}{{ partial "event.html" . }}{{ end }}</ul>
+{{ end }}
