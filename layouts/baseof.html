@@ -8,7 +8,7 @@
 </head>
 <body>
   <header>
-    <a class="logo" href="{{ "/" | relURL }}">{{ site.Title }}</a>
+    <a class="logo" href="{{ site.Home.RelPermalink }}">{{ site.Title }}</a>
     <nav>{{ range site.Menus.main }}<a href="{{ .URL }}">{{ .Name }}</a>{{ end }}</nav>
   </header>
   <main>{{ block "main" . }}{{ end }}</main>
